@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce", "Ecommerce.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{541C030C-CA63-46CC-B47F-3951A8EEED51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service Layer", "..\Service Layer\Service Layer.csproj", "{2CDFDB31-2E41-44BE-A39E-E066D987BA59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{541C030C-CA63-46CC-B47F-3951A8EEED51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{541C030C-CA63-46CC-B47F-3951A8EEED51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{541C030C-CA63-46CC-B47F-3951A8EEED51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CDFDB31-2E41-44BE-A39E-E066D987BA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDFDB31-2E41-44BE-A39E-E066D987BA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDFDB31-2E41-44BE-A39E-E066D987BA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDFDB31-2E41-44BE-A39E-E066D987BA59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
