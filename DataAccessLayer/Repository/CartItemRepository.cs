@@ -10,11 +10,13 @@ namespace DataAccessLayer.Repository
     {
         private readonly EcommerceDbContext _context;
         private readonly DbSet<CartItem> _dbSet;
+        private readonly DbSet<CartItem> _itemDbSet;
 
         public CartItemRepository(EcommerceDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<CartItem>();
+            _itemDbSet = _context.Set<CartItem>();
         }
 
         public IEnumerable<CartItem> GetAll()
@@ -59,6 +61,13 @@ namespace DataAccessLayer.Repository
             }
             _dbSet.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<CartItem> GetAllCartItems()
+        {
+            return _itemDbSet.Include(ci => ci.Product)
+                             .AsNoTracking()
+                             .ToList();
         }
     }
 }

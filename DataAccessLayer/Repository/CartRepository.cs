@@ -10,11 +10,13 @@ namespace DataAccessLayer.Repository
     {
         private readonly EcommerceDbContext _context;
         private readonly DbSet<Cart> _dbSet;
+        private readonly DbSet<CartItem> _itemDbSet;
 
         public CartRepository(EcommerceDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<Cart>();
+            _itemDbSet = _context.Set<CartItem>();
         }
 
         public IEnumerable<Cart> GetAll()
@@ -62,6 +64,39 @@ namespace DataAccessLayer.Repository
                 _dbSet.Attach(entity);
             }
             _dbSet.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public Cart GetCartByCustomerId(int customerId)
+        {
+            return _dbSet.Include(c => c.CartItems)
+                         .ThenInclude(ci => ci.Product)
+                         .AsNoTracking()
+                         .FirstOrDefault(c => c.CustomerId == customerId);
+        }
+
+        public void AddItemToCart(CartItem cartItem)
+        {
+            _context.Add(cartItem);
+            _context.SaveChanges();
+        }
+
+        public void UpdateCartItem(CartItem cartItem)
+        {
+            _context.Update(cartItem);
+            _context.SaveChanges();
+        }
+
+        public CartItem GetItemById(int id)
+        {
+            return _itemDbSet.Include(ci => ci.Product)
+                             .AsNoTracking()
+                             .FirstOrDefault(ci => ci.Id == id);
+        }
+
+        public void RemoveCartItem(CartItem cartItem)
+        {
+            _itemDbSet.Remove(cartItem);
             _context.SaveChanges();
         }
     }
